@@ -1,41 +1,41 @@
 class Api::V1::ClientesController < ApplicationController
   
   def index
-    clientes = Cliente.all()
-    render json:clientes, status: 200
+    @clientes = Cliente.all()
+    render json:@clientes, status: 200
   end
 
   def show
-    client = Cliente.find_by(params[:id])
-    if client
-      render json:client, status: 200
+    @cliente = Cliente.find_by(params[:id])
+    if @cliente
+      render json:@cliente, status: 200
     else
       render json: {error: "Cliente no encontrado"}
     end
   end
 
   def new
-    client = Cliente.new
+    @cliente = Cliente.new
   end
 
   def create
-    client = Cliente.new(
+    @cliente = Cliente.new(
       name: client_params[:name], 
       email: client_params[:email], 
       identification: client_params[:identification])
 
-    if client.save
-      render json:client, status:200
+    if @cliente.save
+      render json:@cliente, status:200
     else
       render json:{error: "no se pudo ingresar"}
     end
   end
 
   def update
-    client = Cliente.find(params[:id])
+    @cliente = Cliente.find(params[:id])
 
-    if client
-      client.update(name: params[:name], email: params[:email], identification: params[:identification])
+    if @cliente
+      @cliente.update(name: params[:name], email: params[:email], identification: params[:identification])
       render json: "Actualizado exitosamente"
     else
       render json:{error: "no se pudo actualizar"}
@@ -43,9 +43,9 @@ class Api::V1::ClientesController < ApplicationController
   end
 
   def destroy
-    client = Cliente.find(params[:id])
-    if client
-      client.destroy
+    @cliente = Cliente.find(params[:id])
+    if @cliente
+      @cliente.destroy
       render json: "Eliminado exitosamente"
     end
   end
