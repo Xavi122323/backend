@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     namespace :v1 do
-      root "clientes#index"
+      root "users#create"
       # get "/clientes", to: "clientes#index"
       # get "/clientes/:id", to: "clientes#show"
       # post "/clientes", to: "clientes#create"
       # put "/clientes/:id", to: "clientes#update"
       # delete "/clientes/:id", to: "clientes#destroy"
       resources :clientes, only:[:index, :show, :create, :update, :destroy]
+      resources :users, only:[:create]
     end
   end
 end
