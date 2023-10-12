@@ -12,8 +12,8 @@ Rails.application.routes.draw do
       # post "/clientes", to: "clientes#create"
       # put "/clientes/:id", to: "clientes#update"
       # delete "/clientes/:id", to: "clientes#destroy"
+      resources :users, only:[:index,:create, :register]
       resources :clientes, only:[:index, :show, :create, :update, :destroy]
-      resources :users, only:[:create]
     end
   end
 end

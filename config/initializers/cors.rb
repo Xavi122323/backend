@@ -15,5 +15,8 @@
      resource '/api/v1/clientes',
        headers: :any,
        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    resource '/api/v1/users',
+       headers: :any,
+       methods: [:get, :post, :put, :patch, :delete, :options, :head, :register]
    end
  end
