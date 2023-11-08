@@ -6,7 +6,7 @@ class Api::V1::ClientesController < ApplicationController
   end
 
   def show
-    @cliente = Cliente.find_by(params[:id])
+    @cliente = Cliente.find(params[:id])
     if @cliente
       render json:@cliente, status: 200
     else
